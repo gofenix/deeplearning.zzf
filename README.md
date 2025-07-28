@@ -1,24 +1,24 @@
-# Deep Learning ZZF
+# 深度学习 ZZF 框架
 
-A comprehensive deep learning framework and toolkit.
+一个全面的深度学习框架和工具包。
 
-## Table of Contents
+## 目录
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [API Reference](#api-reference)
-- [Components](#components)
-- [Examples](#examples)
-- [Contributing](#contributing)
-- [License](#license)
+- [安装](#安装)
+- [快速开始](#快速开始)
+- [API 参考](#api-参考)
+- [组件](#组件)
+- [示例](#示例)
+- [贡献](#贡献)
+- [许可证](#许可证)
 
-## Installation
+## 安装
 
 ```bash
 pip install deeplearning-zzf
 ```
 
-### Development Installation
+### 开发环境安装
 
 ```bash
 git clone https://github.com/gofenix/deeplearning.zzf.git
@@ -26,49 +26,49 @@ cd deeplearning.zzf
 pip install -e .
 ```
 
-## Quick Start
+## 快速开始
 
 ```python
 import deeplearning_zzf as dl
 
-# Basic usage example
+# 基本使用示例
 model = dl.Model()
 model.add_layer(dl.layers.Dense(128, activation='relu'))
 model.add_layer(dl.layers.Dense(10, activation='softmax'))
 model.compile(optimizer='adam', loss='categorical_crossentropy')
 ```
 
-## API Reference
+## API 参考
 
-Detailed API documentation is available in the [docs/api](docs/api) directory.
+详细的API文档位于 [docs/api](docs/api) 目录。
 
-- [Core APIs](docs/api/core.md)
-- [Models](docs/api/models.md)
-- [Layers](docs/api/layers.md)
-- [Optimizers](docs/api/optimizers.md)
-- [Loss Functions](docs/api/losses.md)
-- [Metrics](docs/api/metrics.md)
-- [Data Processing](docs/api/data.md)
-- [Utilities](docs/api/utils.md)
+- [核心API](docs/api/core.md)
+- [模型](docs/api/models.md)
+- [层](docs/api/layers.md)
+- [优化器](docs/api/optimizers.md)
+- [损失函数](docs/api/losses.md)
+- [度量指标](docs/api/metrics.md)
+- [数据处理](docs/api/data.md)
+- [工具函数](docs/api/utils.md)
 
-## Components
+## 组件
 
-See [Component Documentation](docs/components) for detailed information about each component.
+查看 [组件文档](docs/components) 了解每个组件的详细信息。
 
-## Examples
+## 示例
 
-Check out the [examples](examples) directory for comprehensive usage examples:
+查看 [examples](examples) 目录中的完整使用示例：
 
-- [Basic Classification](examples/basic_classification.py)
-- [Convolutional Neural Networks](examples/cnn_example.py)
-- [Recurrent Neural Networks](examples/rnn_example.py)
-- [Transfer Learning](examples/transfer_learning.py)
-- [Custom Training Loop](examples/custom_training.py)
+- [基础分类](examples/basic_classification.py)
+- [卷积神经网络](examples/cnn_example.py)
+- [循环神经网络](examples/rnn_example.py)
+- [迁移学习](examples/transfer_learning.py)
+- [自定义训练循环](examples/custom_training.py)
 
-## Contributing
+## 贡献
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+请阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 了解我们的行为准则和提交拉取请求的流程。
 
-## License
+## 许可证
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+此项目采用 MIT 许可证 - 有关详细信息，请参阅 [LICENSE](LICENSE) 文件。

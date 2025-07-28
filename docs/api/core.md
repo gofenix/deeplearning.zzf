@@ -1,49 +1,49 @@
-# Core API Documentation
+# 核心API文档
 
-## Overview
+## 概述
 
-The core API provides the fundamental building blocks for the Deep Learning ZZF framework.
+核心API提供了深度学习ZZF框架的基础构建块。
 
-## Classes
+## 类
 
 ### `Model`
 
-The main model class for building and training neural networks.
+用于构建和训练神经网络的主要模型类。
 
-#### Constructor
+#### 构造函数
 
 ```python
 Model(name=None, dynamic=False)
 ```
 
-**Parameters:**
-- `name` (str, optional): Name for the model. If None, a unique name will be generated.
-- `dynamic` (bool, default=False): Whether to enable dynamic graph execution.
+**参数：**
+- `name` (str, 可选): 模型名称。如果为None，将生成唯一名称。
+- `dynamic` (bool, 默认False): 是否启用动态图执行。
 
-**Example:**
+**示例：**
 ```python
 import deeplearning_zzf as dl
 
-# Create a basic model
+# 创建基础模型
 model = dl.Model(name="my_classifier")
 
-# Create a dynamic model
+# 创建动态模型
 dynamic_model = dl.Model(dynamic=True)
 ```
 
-#### Methods
+#### 方法
 
 ##### `add_layer(layer)`
 
-Adds a layer to the model.
+向模型添加层。
 
-**Parameters:**
-- `layer` (Layer): A layer instance to add to the model.
+**参数：**
+- `layer` (Layer): 要添加到模型的层实例。
 
-**Returns:**
-- `Model`: Returns self for method chaining.
+**返回：**
+- `Model`: 返回self以支持方法链式调用。
 
-**Example:**
+**示例：**
 ```python
 model = dl.Model()
 model.add_layer(dl.layers.Dense(128, activation='relu'))
@@ -53,14 +53,14 @@ model.add_layer(dl.layers.Dense(10, activation='softmax'))
 
 ##### `compile(optimizer, loss, metrics=None)`
 
-Configures the model for training.
+配置模型以进行训练。
 
-**Parameters:**
-- `optimizer` (str or Optimizer): Optimization algorithm to use.
-- `loss` (str or Loss): Loss function to minimize.
-- `metrics` (list, optional): List of metrics to monitor during training.
+**参数：**
+- `optimizer` (str 或 Optimizer): 要使用的优化算法。
+- `loss` (str 或 Loss): 要最小化的损失函数。
+- `metrics` (list, 可选): 训练期间要监控的指标列表。
 
-**Example:**
+**示例：**
 ```python
 model.compile(
     optimizer='adam',
@@ -71,20 +71,20 @@ model.compile(
 
 ##### `fit(x, y, batch_size=32, epochs=1, validation_data=None, callbacks=None)`
 
-Trains the model on the given data.
+在给定数据上训练模型。
 
-**Parameters:**
-- `x` (array-like): Input data.
-- `y` (array-like): Target data.
-- `batch_size` (int, default=32): Number of samples per gradient update.
-- `epochs` (int, default=1): Number of epochs to train the model.
-- `validation_data` (tuple, optional): Data on which to evaluate the loss and metrics.
-- `callbacks` (list, optional): List of callbacks to apply during training.
+**参数：**
+- `x` (array-like): 输入数据。
+- `y` (array-like): 目标数据。
+- `batch_size` (int, 默认32): 每次梯度更新的样本数。
+- `epochs` (int, 默认1): 训练模型的轮数。
+- `validation_data` (tuple, 可选): 用于评估损失和指标的数据。
+- `callbacks` (list, 可选): 训练期间应用的回调函数列表。
 
-**Returns:**
-- `History`: Training history object.
+**返回：**
+- `History`: 训练历史对象。
 
-**Example:**
+**示例：**
 ```python
 history = model.fit(
     x_train, y_train,
@@ -97,100 +97,100 @@ history = model.fit(
 
 ##### `predict(x, batch_size=None)`
 
-Generates predictions for the input samples.
+为输入样本生成预测。
 
-**Parameters:**
-- `x` (array-like): Input data.
-- `batch_size` (int, optional): Size of batches for prediction.
+**参数：**
+- `x` (array-like): 输入数据。
+- `batch_size` (int, 可选): 预测时的批次大小。
 
-**Returns:**
-- `array`: Predictions.
+**返回：**
+- `array`: 预测结果。
 
-**Example:**
+**示例：**
 ```python
 predictions = model.predict(x_test, batch_size=128)
 ```
 
 ##### `evaluate(x, y, batch_size=None)`
 
-Evaluates the model on test data.
+在测试数据上评估模型。
 
-**Parameters:**
-- `x` (array-like): Input data.
-- `y` (array-like): Target data.
-- `batch_size` (int, optional): Size of batches for evaluation.
+**参数：**
+- `x` (array-like): 输入数据。
+- `y` (array-like): 目标数据。
+- `batch_size` (int, 可选): 评估时的批次大小。
 
-**Returns:**
-- `dict`: Dictionary containing loss and metrics values.
+**返回：**
+- `dict`: 包含损失和指标值的字典。
 
-**Example:**
+**示例：**
 ```python
 results = model.evaluate(x_test, y_test, batch_size=128)
-print(f"Test accuracy: {results['accuracy']:.4f}")
+print(f"测试准确率: {results['accuracy']:.4f}")
 ```
 
 ##### `save(filepath)`
 
-Saves the model to a file.
+将模型保存到文件。
 
-**Parameters:**
-- `filepath` (str): Path where to save the model.
+**参数：**
+- `filepath` (str): 保存模型的路径。
 
-**Example:**
+**示例：**
 ```python
 model.save('my_model.h5')
 ```
 
-##### `load(filepath)` (class method)
+##### `load(filepath)` (类方法)
 
-Loads a model from a file.
+从文件加载模型。
 
-**Parameters:**
-- `filepath` (str): Path to the saved model.
+**参数：**
+- `filepath` (str): 保存模型的路径。
 
-**Returns:**
-- `Model`: Loaded model instance.
+**返回：**
+- `Model`: 加载的模型实例。
 
-**Example:**
+**示例：**
 ```python
 loaded_model = dl.Model.load('my_model.h5')
 ```
 
-## Functions
+## 函数
 
 ### `load_model(filepath)`
 
-Utility function to load a saved model.
+加载保存模型的工具函数。
 
-**Parameters:**
-- `filepath` (str): Path to the saved model.
+**参数：**
+- `filepath` (str): 保存模型的路径。
 
-**Returns:**
-- `Model`: Loaded model instance.
+**返回：**
+- `Model`: 加载的模型实例。
 
-**Example:**
+**示例：**
 ```python
 model = dl.load_model('trained_model.h5')
 ```
 
 ### `set_random_seed(seed)`
 
-Sets the random seed for reproducible results.
+设置随机种子以获得可重现的结果。
 
-**Parameters:**
-- `seed` (int): Random seed value.
+**参数：**
+- `seed` (int): 随机种子值。
 
-**Example:**
+**示例：**
 ```python
 dl.set_random_seed(42)
 ```
 
-## Constants
+## 常量
 
 ### `__version__`
 
-String containing the version number of the framework.
+包含框架版本号的字符串。
 
 ```python
-print(f"Deep Learning ZZF version: {dl.__version__}")
+print(f"深度学习 ZZF 版本: {dl.__version__}")
 ```
